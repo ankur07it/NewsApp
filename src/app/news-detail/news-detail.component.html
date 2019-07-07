@@ -1,5 +1,5 @@
 <div class="container">
-    <div *ngIf="(article$ | async) as article">
+    <div *ngIf="article">
         <div class="card">
             <img src="{{ article.urlToImage ? article.urlToImage : 'https://imgplaceholder.com/420x320/e3e0e0/757575/fa-file-picture-o?text=Image+Not+Found' }}"
                 alt="{{ article.title }}" width="100%">
@@ -21,7 +21,7 @@
                             <p>{{article.content}}</p>
                         </div>
                         <div class="row btn-center">
-                            <button mat-raised-button color="accent" class="rounded-btn">Read more</button>
+                            <button mat-raised-button color="accent" (click)="goToArticle(article.url)" class="rounded-btn">Read more</button>
                         </div>
 
 

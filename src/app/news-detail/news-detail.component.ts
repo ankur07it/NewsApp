@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
-import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
+import { NewsListModel } from '../news/model/news-list.model';
 
 @Component({
     selector: 'app-news-detail',
@@ -10,7 +10,7 @@ import { map } from 'rxjs/operators';
     styleUrls: ['./news-detail.component.scss']
 })
 export class NewsDetailComponent implements OnInit {
-    public article$: Observable<object>;
+    public article: NewsListModel = null;
 
     public comments: any[] = [
         {
@@ -45,22 +45,22 @@ export class NewsDetailComponent implements OnInit {
     ];
 
     constructor(
-        public activatedRoute: ActivatedRoute
+        public activatedRoute: ActivatedRoute,
+        private router: Router
     ) { }
 
     public ngOnInit() {
-        this.article$ = this.activatedRoute.paramMap.pipe(
+        this.activatedRoute.paramMap.pipe(
             map(() => window.history.state)
-        );
-
-        // Make sure that this page can only be
-        // accessible from the main News list with
-        // a loaded article from 'state', if url entered
-        // manually from the browser it should go back to
-        // the /news view
+        ).subscribe(article => {
+            if (!article.title) {
+                this.router.navigate(['./news']);
+            }
+            this.article = article;
+        })
     }
 
     public goToArticle(url: string): void {
-        // Open original article in new tab
+        window.open(url, "_blank");
     }
 }
