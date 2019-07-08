@@ -1,14 +1,14 @@
-.ellipsis {
+.newsComponent-title {
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
   }
 
-  .height-card {
+  .newsComponent-card {
     height: 430px;
   }
 
-  .block-with-text {
+  .newsComponent-card-text {
     overflow: hidden;
     position: relative;
     line-height: 1.2em;
@@ -18,14 +18,14 @@
     padding-right: 1em;
   }
 
-  .block-with-text:before {
+  .newsComponent-card-text:before {
     content: '...';
     position: absolute;
     right: 0;
     bottom: 0;
   }
   
-  .block-with-text:after {
+  .newsComponent-card-text:after {
     content: '';
     position: absolute;
     right: 0;

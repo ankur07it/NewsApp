@@ -10,7 +10,6 @@ import { debounceTime, distinctUntilChanged } from 'rxjs/operators';
     styleUrls: ['./news.component.scss']
 })
 export class NewsComponent implements OnInit {
-
     public articles: NewsListModel[] = [];
     public search: string;
     public searchUpdate = new Subject<string>();
@@ -36,14 +35,10 @@ export class NewsComponent implements OnInit {
     private _fetchArticles(search?: string): void {
         this._newsService.headlines(search).subscribe((articles: NewsListModel[]) => {
             this.articles = articles;
-            console.log(this.articles[0])
             if (this.articles.length === 0) {
                 this.isArticlesAvailable = true;
             }
             this.isLoadingNews = false;
         });
     }
-
-
-
 }

@@ -2,29 +2,28 @@
     <div *ngIf="article">
         <div class="card">
             <img src="{{ article.urlToImage ? article.urlToImage : 'https://imgplaceholder.com/420x320/e3e0e0/757575/fa-file-picture-o?text=Image+Not+Found' }}"
-                alt="{{ article.title }}" width="100%">
+                alt="{{ article?.title }}" width="100%">
             <div class="card-body">
                 <div class="row">
                     <div class="col-xs-12 col-md-3 ">
-                        <ul class="list">
-                            <li>{{article.source.name}}</li>
-                            <li>{{article.author}}</li>
-                            <li>{{article.publishedAt | date :'longDate'}}</li>
+                        <ul class="newsDetailsComponent-list">
+                            <li>{{article?.source?.name}}</li>
+                            <li>{{article?.author}}</li>
+                            <li>{{article?.publishedAt | date :'longDate'}}</li>
                             <li>3 comments</li>
                         </ul>
                     </div>
                     <div class="col-xs-12 col-md-9 bottom-left">
-                        <div class="row description">
-                            <h5>{{article.description | uppercase}}</h5>
+                        <div class="row newsDetailsComponent-title">
+                            <h5>{{article?.description | uppercase}}</h5>
                         </div>
-                        <div class="row description-content">
-                            <p>{{article.content}}</p>
+                        <div class="row newsDetailsComponent-content">
+                            <p>{{article?.content}}</p>
                         </div>
-                        <div class="row btn-center">
-                            <button mat-raised-button color="accent" (click)="goToArticle(article.url)" class="rounded-btn">Read more</button>
+                        <div class="row newsDetailsComponent-btn-center">
+                            <button mat-raised-button color="accent" (click)="goToArticle(article.url)" class="newsDetailsComponent-btn">Read
+                                more</button>
                         </div>
-
-
                     </div>
                 </div>
             </div>
@@ -32,26 +31,23 @@
                 <div class="card-title">
                     <h1>3 Comments</h1>
                 </div>
-                <div class="comment-section" *ngFor="let comment of comments">
+                <div class="newsDetailsComponent-comment-section" *ngFor="let comment of comments">
                     <div class="row">
                         <div class="col-xs-3 col-md-1">
-                            <img class="rounded-img" src="{{comment.avatar}}">
+                            <img class="newsDetailsComponent-img" src="{{comment.avatar}}">
                         </div>
                         <div class="col-xs-9 col-md-11">
                             <div class="row">
                                 <p class="col-6">{{comment.name}}</p>
-                                <p class="col-6 date">{{comment.date | date :'longDate'}}</p>
+                                <p class="col-6 newsDetailsComponent-date">{{comment.date | date :'longDate'}}</p>
                             </div>
                             <div class="row">
-                                <p class="comment-c">{{comment.comment}}</p>
+                                <p class="newsDetailsComponent-comment">{{comment.comment}}</p>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-
-
-
         </div>
     </div>
 </div>

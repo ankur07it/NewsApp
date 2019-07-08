@@ -1,13 +1,13 @@
 <div class="container">
-    <form class="example-form">
+    <form>
         <mat-progress-bar mode="indeterminate" *ngIf="isLoadingNews"></mat-progress-bar>
-        <mat-form-field class="example-fu ll-width">
+        <mat-form-field>
             <input matInput placeholder="Search News" [(ngModel)]="search" name="search" (ngModelChange)="this.searchUpdate.next($event)">
         </mat-form-field>
     </form>
     <div class="card-columns">
         <div *ngFor="let article of articles">
-            <div class="card height-card">
+            <div class="card newsComponent-card">
                 <div class="card-image">
                     <img class="card-image-top" src="{{ article.urlToImage ? article.urlToImage : 'https://imgplaceholder.com/420x320/e3e0e0/757575/fa-file-picture-o?text=Image+Not+Found' }}"
                         alt="{{ article.title }}" width="100%" height="250px">
@@ -15,8 +15,9 @@
                 <div class="card-body">
                     <h6 class="card-subtitle mb-2 text-muted">{{article.source.name | uppercase}} {{article.publishedAt
                         | date :'longDate'}}</h6>
-                    <h4 class="card-title ellipsis"><a routerLink="/article" [state]="article">{{ article.title }}</a></h4>
-                    <p class="card-text block-with-text">{{article.description}}</p>
+                    <h4 class="card-title newsComponent-title"><a routerLink="/article" [state]="article">{{
+                            article.title }}</a></h4>
+                    <p class="card-text newsComponent-card-text">{{article.description}}</p>
                 </div>
             </div>
         </div>
