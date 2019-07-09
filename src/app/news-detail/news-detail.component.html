@@ -14,7 +14,7 @@
                         </ul>
                     </div>
                     <div class="col-xs-12 col-md-9 bottom-left">
-                        <div class="row newsDetailsComponent-title">
+                        <div (mouseover)="onTitleHover()" [@hoverAnimation]="isHover ? 'mouseover' : 'mouseout'"  class="row newsDetailsComponent-title">
                             <h5>{{article?.description | uppercase}}</h5>
                         </div>
                         <div class="row newsDetailsComponent-content">

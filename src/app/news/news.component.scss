@@ -34,3 +34,12 @@
     margin-top: 0.2em;
     background: white;
   }
+
+  .newsComponent-img:hover {
+    position:relative;
+    margin: -10px -10px -10px 0px;
+    width:370px;
+    height:auto;
+    display:block;
+    z-index:999;
+}

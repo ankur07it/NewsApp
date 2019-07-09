@@ -3,14 +3,38 @@ import { ActivatedRoute, Router } from '@angular/router';
 
 import { map } from 'rxjs/operators';
 import { NewsListModel } from '../news/model/news-list.model';
+import {
+    trigger,
+    state,
+    style,
+    animate,
+    transition
+  } from '@angular/animations';
 
 @Component({
     selector: 'app-news-detail',
+    animations: [
+        trigger('hoverAnimation', [
+          state('mouseover', style({
+            color: 'yellow'
+          })),
+          state('mouseout', style({
+            color: 'black'
+          })),
+          transition('mouseover => mouseout', [
+            animate('0.5s')
+          ]),
+          transition('mouseout => mouseover', [
+            animate('0.25s')
+          ]),
+        ]),
+      ],
     templateUrl: './news-detail.component.html',
     styleUrls: ['./news-detail.component.scss']
 })
 export class NewsDetailComponent implements OnInit {
     public article: NewsListModel = null;
+    public isHover:boolean = false;
 
     public comments: any[] = [
         {
@@ -58,6 +82,10 @@ export class NewsDetailComponent implements OnInit {
             }
             this.article = article;
         })
+    }
+
+    public onTitleHover() {
+        this.isHover = !this.isHover;
     }
 
     public goToArticle(url: string): void {

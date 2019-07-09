@@ -9,8 +9,9 @@
         <div *ngFor="let article of articles">
             <div class="card newsComponent-card">
                 <div class="card-image">
-                    <img class="card-image-top" src="{{ article.urlToImage ? article.urlToImage : 'https://imgplaceholder.com/420x320/e3e0e0/757575/fa-file-picture-o?text=Image+Not+Found' }}"
-                        alt="{{ article.title }}" width="100%" height="250px">
+                    <a routerLink="/article" [state]="article">
+                        <img class="card-image-top newsComponent-img" src="{{ article.urlToImage ? article.urlToImage : 'https://imgplaceholder.com/420x320/e3e0e0/757575/fa-file-picture-o?text=Image+Not+Found' }}"
+                            alt="{{ article.title }}" width="100%" height="250px"></a>
                 </div>
                 <div class="card-body">
                     <h6 class="card-subtitle mb-2 text-muted">{{article.source.name | uppercase}} {{article.publishedAt
